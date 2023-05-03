@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="agua.js"></script>
+    <link rel="stylesheet" href="../dataStyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="volta">
+        <input type="image" src="../Images/turn-back.png" alt="Button" id="voltar" onclick="location.href='../index.html'">
+    </div>
+    <form>
+        <div class="container">
+            <div class="h1Container">
+                <h1 id="date"></h1>
+            </div>
+            <div class = "var">
+                <label for="alcalinidade">Alcalinidade: </label>
+                <input type="number" id="alcalinidade" placeholder="Insira os dados" name="alcalinidade"/>
+            </div>
+            <br>
+            <div class = "var">
+                <label for="dureza">Dureza: </label>
+                <input type="number" id="dureza" placeholder="Insira os dados" name="dureza"/>
+            </div>
+            <br>
+            <div class = "var">
+                <label for="nitrito">Nitrito: </label>
+                <input type="number" id="nitrito" placeholder="Insira os dados" name="nitrito"/>
+            </div>
+            <br>
+            <div class = "var">
+                <label for="nitrato">Nitrato: </label>
+                <input type="number" id="nitrato" placeholder="Insira os dados" name="nitrato"/>
+            </div>
+            <br>
+            <div class = "var">
+                <label for="amoniaTotal">Amônia Total: </label>
+                <input type="number" id="amoniaTotal" placeholder="Insira os dados" name="amoniaTotal"/>
+            </div>
+            <br>
+            <div class = "var">
+                <label for="condutividade">Condutividade: </label>
+                <input type="number" id="condutividadee" placeholder="Insira os dados" name="condutividade"/>
+            </div>
+            <br>
+            <div class="submitContainer">
+                <input type="button" class="enviar" onclick="getData()" value="  ENVIAR  " />
+            </div>            
+        </div>
+    </form>
+    <br>
+</body>
+</html>
+
+<!--alcalinidade, dureza, Oxigênio dissolvido (OD), nitrito, amônia, dureza, alcalinidade, peso peixes, peso plantas, comprimento peixes, altura plantas-->

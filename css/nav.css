@@ -1,0 +1,41 @@
+@font-face {
+    font-family: lightAlegreya;
+    src: url(Alegreya/static/Alegreya-Regular.ttf);
+}
+@font-face {
+    font-family: mediumAlegreya;
+    src: url(Alegreya/static/Alegreya-Medium.ttf);
+}
+@font-face {
+    font-family: boldAlegreya;
+    src: url(Alegreya/static/Alegreya-Bold.ttf);
+}
+@font-face {
+    font-family: extraBoldAlegreya;
+    src: url(Alegreya/static/Alegreya-ExtraBold.ttf);
+}
+@font-face {
+    font-family: italicAlegreya;
+    src: url(Alegreya/Alegreya-Italic-VariableFont_wght.ttf);
+}
+body{
+    background-color: #E1F2E1;
+}
+.nav{
+    background-color: #05274e;
+    font-family: lightAlegreya;
+}
+.nav-link{
+    color: white;
+}
+.nav-link:hover{
+    color: white;
+    text-decoration:underline;
+}
+.active{
+    text-decoration:underline;
+}
+.nav-item{
+    font-size: 20px;
+    margin: 0.6em;
+}

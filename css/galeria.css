@@ -1,0 +1,20 @@
+.carousel{
+    margin: 4%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 70%;
+    background-color: #05274e;
+}
+
+.carousel-inner{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.tituloPagina{
+    font-family: boldAlegreya;
+    font-size: 1.7em;
+    margin-top: 4%;
+    margin-bottom: -3%;
+    color: black;
+}

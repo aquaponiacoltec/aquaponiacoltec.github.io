@@ -22,6 +22,9 @@
     background-color: rgb(54, 113, 116);
 }
 
+#subtextoIntro{
+    text-indent: 50px;
+}
 #textoIntro{
     color: rgb(255, 255, 255);
     font-size: 150%;

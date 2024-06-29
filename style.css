@@ -1,3 +1,17 @@
+@font-face {
+    font-family: brandFont;
+    src: url(Fonts/Silky\ Queen.otf);
+}
+
+@font-face {
+    font-family: titleFont;
+    src: url(Fonts/Philosopher-Bold.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(Fonts/Philosopher-Regular.ttf);
+}
 
 body {
     font-family: textFont, Arial, sans-serif;

@@ -1,21 +1,9 @@
 @font-face {
-    font-family: 'Bebas Neue';
-    src: url(Fonts/Silky\ Queen.otf);
-}
-
-@font-face {
-    font-family: 'titleFont';
-    src: url(Fonts/Philosopher-Bold.ttf);
-}
-
-@font-face {
-    font-family: 'textFont';
-    src: url(Fonts/Philosopher-Regular.ttf);
+    font-family: textFont;
+    src: url(Fonts/BebasNeue-Regular.ttf);
 }
 
 body {
-    font-family: 'Open Sans', textFont, titleFont; /* Use Open Sans como principal */
-    background-image: linear-gradient(to bottom, rgb(189, 220, 233), rgb(240, 248, 255), rgb(240, 248, 255), rgb(108, 174, 224));
     margin: 0;
     padding: 0;
     zoom: 80%;
@@ -26,34 +14,41 @@ body {
 }
 
 #intro {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(240, 248, 255, 1)), url("Imagens/alface1.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #146f71;
+    background-color: #ffffff;
     color: white;
     padding: 60px 0;
 }
 
-#textoIntro {
-    color: rgb(240, 248, 255);
+#line{
+    background-color: #146F71;
+    height: 15px;
+    width: auto;
     border-radius: 25px;
-    background-color: rgb(50, 100, 168);
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#textoIntro {
+    color: rgb(20, 111, 113);
+    border-radius: 25px;
+    background-color: rgb(#146F71);
     padding: 20px;
 }
 
 .nav-link {
     font-size: large;
-    font-family: 'Open Sans', titleFont; /* Use Open Sans */
-    color: rgb(176, 196, 222);
+    color: rgb(255, 255, 255);
     margin-left: 15px;
 }
 
 .nav-link:hover {
-    color: rgb(240, 248, 255);
+    color: rgb(20, 111, 113);
 }
 
 .bi-twitter, .bi-instagram, .bi-linkedin {
-    color: rgb(176, 196, 222);
+    color: rgb(20, 111, 113);
     transition: color 0.3s;
 }
 
@@ -62,8 +57,8 @@ body {
 }
 
 .card {
-    background-color: rgb(108, 174, 224);
-    border-radius: 25px;
+    background-color: rgb(20, 111, 113);
+    border-radius: 3px;
     transition: transform 0.3s;
 }
 
@@ -84,43 +79,39 @@ body {
 .card-title {
     font-size: 1.5rem;
     color: white;
-    font-family: 'Open Sans'; /* Use Open Sans */
+    
+}
+
+.dropdown-toggle {
+    background-color: white;
+
 }
 
 .btn-primary {
-    background-color: rgb(108, 174, 224);
+    background-color: transparent;
     border-radius: 25px;
     font-size: 1.2rem;
-    color: rgb(50, 100, 168);
+    color: rgb(#146F71);
     margin-top: 10px;
-    font-family: 'Open Sans'; /* Use Open Sans */
 }
 
 .btn-primary:hover {
     color: white;
-    background-color: rgb(50, 100, 168);
-    border-color: rgb(50, 100, 168);
+    background-color: rgb(20, 111, 113);
+    border-color: rgb(20, 111, 113);
 }
 
 footer {
-    background-color: rgb(20, 63, 93);
-    color: rgb(176, 196, 222);
+    background-color: rgb(20, 111, 113);
+    color: rgb(255, 255, 255);
     padding: 10px 0;
 }
 
-.section-title {
-    color: rgb(240, 248, 255);
-    font-size: 2.5rem;
-    border-radius: 25px;
-    background-color: rgb(50, 100, 168);
-    padding: 20px;
-    font-family: 'Open Sans'; /* Use Open Sans */
-}
+
 
 .navbar-brand {
-    font-family: 'Open Sans'; /* Use Open Sans */
     font-size: 1.8rem;
-    color: rgb(176, 196, 222);
+    color: rgb(255, 255, 255);
 }
 
 .imageGalery {
@@ -129,7 +120,7 @@ footer {
 }
 
 .social-icons a {
-    color: rgb(176, 196, 222);
+    color: rgb(255, 255, 255);
     transition: color 0.3s;
 }
 
@@ -137,20 +128,21 @@ footer {
     color: white;
 }
 
-/* Apply Bebas Neue to elements within theNav */
-#theNav, .theNav {
-    font-family: 'Bebas Neue';
+.section-title {
+    color: rgb(20, 111, 113);
+    font-weight: 500;
+    font-size: 2.5rem;
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
 }
-
 /* Rectangle around sections */
 .section-content {
     border: 2px solid #146f71;
+    background-color: #146F71;
+    border-radius: 3px;
+    color: white;
     padding: 20px;
     margin-bottom: 20px;
-}
-
-/* Separator line */
-#separator {
-    border-top: 2px solid #146f71;
-    margin: 40px 0;
+   
 }

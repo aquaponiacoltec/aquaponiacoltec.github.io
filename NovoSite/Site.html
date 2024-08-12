@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aquaponia Coltec</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style2.css">
     <style>
@@ -35,31 +37,30 @@
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex">
                 <!-- Sobre Nós DropDown -->
-                <div class="nav-item dropdown">
-                    <a type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <div class="nav-item dropdown ms-3">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Sobre Nós
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"> Sobre</a>
-                        <a class="dropdown-item" href="#"> Time</a>
-                        <a class="dropdown-item" href="#"></a>
-                    </div>
-                </div>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Sobre</a></li>
+                        <li><a class="dropdown-item" href="#">Time</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                    </ul>
+                </div>                
             </div>
             <a href="#intro" class="navbar-brand mx-auto">AQUAPONIA COLTEC</a>
             <div class="d-flex">
                 <!-- Sobre Aquaponia DropDown -->
                 <div class="nav-item dropdown ms-3">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                        Sobre Aquaponia
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sobre Nós
                     </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#sobre-aquaponia">O que é</a>
-                        <a class="dropdown-item" href="Posts/post3.html">Sistemas</a>
-                        <a class="dropdown-item" href="Posts/post2.html">Cuidados</a>
-                        <a class="dropdown-item" href="#especies">Espécies</a>
-                    </div>
-                </div>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Sobre</a></li>
+                        <li><a class="dropdown-item" href="#">Time</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                    </ul>
+                </div>  
             </div>
         </div>
     </nav>
@@ -209,7 +210,6 @@
             <p>&copy; Aquaponia Coltec</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQN"></script>
 </body>
 
 </html>

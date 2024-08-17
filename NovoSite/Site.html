@@ -7,7 +7,7 @@
     <title>Aquaponia Coltec</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style2.css">
     <style>
@@ -33,39 +33,39 @@
 </head>
 
 <body>
-    <nav id="theNav" class="navbar">
-        <div class="container d-flex mb-2 justify-content-between align-items-center">
-            <div class="d-flex">
-                <!-- Sobre Nós DropDown -->
-                <div class="nav-item dropdown ms-3">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sobre Nós
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#intro">Noticias</a></li>
-                        <li><a class="dropdown-item" href="#">Time</a></li>
-                        <li><a class="dropdown-item" href="#">Objetivo</a></li>
-                    </ul>
-                </div>                
-            </div>
-            <a href="#sobre-aquaponia" class="navbar-brand mt-2">AQUAPONIA COLTEC</a>
-            <div class="d-flex">
-                <!-- Sobre Aquaponia DropDown -->
-                <div class="nav-item dropdown ms-3">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sobre Aquaponia
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#sobre-aquaponia">O que é</a></li>
-                        <li><a class="dropdown-item" href="#Sistemas">Sistemas</a></li>
-                        <li><a class="dropdown-item" href="#Cuidados">Cuidados</a></li>
-                        <li><a class="dropdown-item" href="#Especies">Especies</a></li>
-                    </ul>
-                </div>  
+    <nav id="theNav" class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">AQUAPONIA COLTEC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sobre Nós
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <li><a class="dropdown-item" href="#intro">Notícias</a></li>
+                            <li><a class="dropdown-item" href="#">Time</a></li>
+                            <li><a class="dropdown-item" href="#">Objetivo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sobre Aquaponia
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                            <li><a class="dropdown-item" href="#sobre-aquaponia">O que é</a></li>
+                            <li><a class="dropdown-item" href="#Sistemas">Sistemas</a></li>
+                            <li><a class="dropdown-item" href="#Cuidados">Cuidados</a></li>
+                            <li><a class="dropdown-item" href="#Especies">Espécies</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-
 
     <div id="line"></div>
     <section id="intro" class="p-0 p-md-0 text-center text-lg-start">
@@ -149,19 +149,19 @@
         <div class="container">
             <h2 class="section-title text-center mb-5 mt-3 p-2">SOBRE AQUAPONIA</h2>
             <div id="info" class="section-content">
-                <a id="o-que-e-aquaponia" href="O-que-e-aquaponia.html" classe="row mb-4">
-                    <div class="col-lg-6">
+                <a id="o-que-e-aquaponia" href="O-que-e-aquaponia.html" class="row mb-4">
+                    <div class="col-lg-6  order-lg-1">
                         <h3>O que é Aquaponia?</h3>
                         <p>Aquaponia é um sistema integrado de produção de alimentos que combina a aquicultura (criação de peixes) com a hidroponia (cultivo de plantas em água). Neste sistema, os resíduos gerados pelos peixes, que normalmente seriam descartados como poluentes, são transformados em nutrientes para as plantas, promovendo um ciclo sustentável e eficiente...</p>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6  order-lg-2">
                         <img src="Imagens/aquaponia1.jpg" class="img-fluid" alt="Aquaponia">
                     </div>
                 </a>
             </div>
             <div id="info" class="section-content">
                 <a id="Sistemas" href="Sistemas.html" class="row mb-4">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6  order-lg-2">
                         <h3>Sistemas Aquapônicos</h3>
                         <p>Os sistemas aquapônicos são diversos e podem ser adaptados a diferentes contextos, desde pequenas hortas domésticas até grandes fazendas comerciais.</p>
                     </div>
@@ -171,18 +171,18 @@
                 </a>
             </div>
             <div id="info" class="section-content">
-                <div id="Cuidados" class="row mb-4">
-                    <div class="col-lg-6">
+                <a id="Cuidados" href="Cuidados.html" class="row mb-4">
+                    <div class="col-lg-6 order-lg-1">
                         <h3>Cuidados na Aquaponia</h3>
                         <p>Cuidar de um sistema aquapônico envolve monitorar a qualidade da água, garantir a saúde dos peixes e plantas, e realizar manutenção regular para evitar problemas.</p>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 order-lg-2">
                         <img src="Imagens/cuidados.jpg" class="img-fluid" alt="Cuidados na Aquaponia">
                     </div>
-                </div>
+                </a>
             </div>
             <div id="info" class="section-content">
-                <div id="Especies" class="row mb-4">
+                <a id="Especies" href="Especies.html" class="row mb-4">
                     <div class="col-lg-6 order-lg-2">
                         <h3>Espécies Utilizadas</h3>
                         <p>Diversas espécies de peixes e plantas podem ser utilizadas em sistemas aquapônicos, dependendo das condições locais e dos objetivos do produtor.</p>
@@ -190,7 +190,7 @@
                     <div class="col-lg-6 order-lg-1">
                         <img src="Imagens/especies.jpg" class="img-fluid" alt="Espécies na Aquaponia">
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>

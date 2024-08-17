@@ -66,6 +66,18 @@ a{
     color: rgb(20, 111, 113);
 }
 
+/* Estilo para "Sobre Nós" e "Sobre Aquaponia" */
+.nav-link.dropdown-toggle {
+    color: #146f71;
+}
+
+/* Estilo para o dropdown menu */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #146f71;
+    color: white;
+}
+
+
 .bi-twitter, .bi-instagram, .bi-linkedin {
     color: rgb(20, 111, 113);
     transition: color 0.3s;
@@ -131,6 +143,10 @@ footer {
 .navbar-brand {
     font-size: 1.8rem;
     color: rgb(255, 255, 255);
+}
+
+.navbar-toggler{
+    background-color: #146f71;
 }
 
 .navbar-brand:hover{

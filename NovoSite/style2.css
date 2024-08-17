@@ -37,6 +37,25 @@ body {
     padding: 20px;
 }
 
+a{
+    color: white;
+    text-decoration: none;
+}
+
+#info{
+    transition: transform 1s;
+}
+
+#info:hover{
+    transform: scale(1.03);
+}
+
+
+#o-que-e-aquaponia-texto{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
 .nav-link {
     font-size: large;
     color: rgb(255, 255, 255);
@@ -84,7 +103,7 @@ body {
 
 .dropdown-toggle {
     background-color: white;
-
+    border: 0;
 }
 
 .btn-primary {
@@ -112,6 +131,10 @@ footer {
 .navbar-brand {
     font-size: 1.8rem;
     color: rgb(255, 255, 255);
+}
+
+.navbar-brand:hover{
+    color: white;
 }
 
 .imageGalery {

@@ -1,0 +1,135 @@
+@font-face {
+    font-family: brandFont;
+    src: url(Fonts/Silky\ Queen.otf);
+}
+
+@font-face {
+    font-family: titleFont;
+    src: url(Fonts/Philosopher-Bold.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(Fonts/Philosopher-Regular.ttf);
+}
+
+body {
+    font-family: textFont, Arial, sans-serif;
+    background-image: linear-gradient(to bottom, rgb(189, 220, 233), rgb(240, 248, 255), rgb(240, 248, 255), rgb(108, 174, 224));
+    margin: 0;
+    padding: 0;
+    zoom: 80%;
+}
+
+.navbar {
+    background-color: rgb(20, 63, 93);
+}
+
+#intro {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(240, 248, 255, 1)), url("Imagens/alface1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(50, 100, 168);
+    color: white;
+    padding: 60px 0;
+}
+
+#textoIntro {
+    color: rgb(240, 248, 255);
+    border-radius: 25px;
+    background-color: rgb(50, 100, 168);
+    padding: 20px;
+}
+
+.nav-link {
+    font-size: large;
+    font-family: titleFont;
+    color: rgb(176, 196, 222);
+    margin-left: 15px;
+}
+
+.nav-link:hover {
+    color: rgb(240, 248, 255);
+}
+
+.bi-twitter, .bi-instagram, .bi-linkedin {
+    color: rgb(176, 196, 222);
+    transition: color 0.3s;
+}
+
+.bi-twitter:hover, .bi-instagram:hover, .bi-linkedin:hover {
+    color: white;
+}
+
+.card {
+    background-color: rgb(108, 174, 224);
+    border-radius: 25px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.card-img:hover {
+    transform: scale(1.1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.btn-primary {
+    background-color: rgb(108, 174, 224);
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: rgb(50, 100, 168);
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    color: white;
+    background-color: rgb(50, 100, 168);
+    border-color: rgb(50, 100, 168);
+}
+
+footer {
+    background-color: rgb(20, 63, 93);
+    color: rgb(176, 196, 222);
+    padding: 10px 0;
+}
+
+.section-title {
+    color: rgb(240, 248, 255);
+    font-size: 2.5rem;
+    border-radius: 25px;
+    background-color: rgb(50, 100, 168);
+    padding: 20px;
+}
+
+.navbar-brand {
+    font-family: brandFont;
+    font-size: 1.8rem;
+    color: rgb(176, 196, 222);
+}
+
+.imageGalery {
+    border-radius: 0.8em;
+    border: solid;
+}
+
+.social-icons a {
+    color: rgb(176, 196, 222);
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: white;
+}

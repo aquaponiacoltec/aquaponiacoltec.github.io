@@ -19,15 +19,16 @@
             text-align: left;
         }
         th {
-            background-color: #f4f4f4;
+            background-color: #003366; /* Cor azul escuro para o cabeçalho */
+            color: white;
         }
-        tr:nth-child(even) {
-            background-color: rgb(20, 111, 113); /* Cor de fundo para as linhas pares */
+        tr:nth-child(odd) td {
+            background-color: #e6f2ff; /* Azul clarinho */
         }
-        tr:nth-child(odd) {
-            background-color: #146F71; /* Cor de fundo para as linhas ímpares */
+        tr:nth-child(even) td {
+            background-color: #99ccff; /* Azul normal */
         }
-        tr:hover {
+        tr:hover td {
             background-color: lightblue; /* Cor ao passar o mouse por cima */
         }
     </style>
@@ -84,21 +85,48 @@
                 table.className = 'table table-bordered';
                 const sheetData = data[sheet];
 
-                sheetData.forEach(row => {
+                // Criação do cabeçalho
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                sheetData[0].forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                // Criação do corpo da tabela
+                const tbody = document.createElement('tbody');
+                sheetData.slice(1).forEach((row, rowIndex) => {
                     const tr = document.createElement('tr');
-                    row.forEach(cell => {
+                    row.forEach((cell, cellIndex) => {
                         const td = document.createElement('td');
-                        td.textContent = cell;
+
+                        // Verifica se o valor é uma data (somente para a primeira coluna, ignorando o cabeçalho)
+                        if (cellIndex === 0 && isValidDate(cell)) {
+                            let date = new Date(cell);
+                            td.textContent = date.toLocaleDateString(); // Exibe apenas a data
+                        } else {
+                            td.textContent = cell;
+                        }
+
                         tr.appendChild(td);
                     });
-                    table.appendChild(tr);
+                    tbody.appendChild(tr);
                 });
+                table.appendChild(tbody);
 
                 tabPane.appendChild(table);
                 tabContent.appendChild(tabPane);
 
-                isFirst = false; // Marca a primeira aba como ativa
+                isFirst = false;
             }
+        }
+
+        function isValidDate(dateString) {
+            let date = new Date(dateString);
+            return !isNaN(date.getTime());
         }
 
         fetchData();

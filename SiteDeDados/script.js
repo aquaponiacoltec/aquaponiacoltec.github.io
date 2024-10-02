@@ -1,103 +1,9 @@
-let dadosAlfaces = [];
-let dadosPeixes = []; // Variável para armazenar dados dos peixes
 
-// Funções para Alfaces
-function fetchAlfacesData() {
-    fetch('https://script.google.com/macros/s/AKfycbwrZLLmrjcw7TuCoOL1sIUe0pa9sfNgFUIsPrF-YdI/dev') 
-        .then(response => response.json())
-        .then(data => {
-            dadosAlfaces = data.map(row => ({
-                mes: row[0],
-                ano: row[1],
-                quantidade: row[2],
-                peso: row[3],
-                medicoes: row[4].split(', ')
-            }));
-        })
-        .catch(error => console.error('Erro ao buscar dados:', error));
-}
+let dadosAlfaces = JSON.parse(localStorage.getItem('dadosAlfaces')) || [];
+let dadosPeixes = JSON.parse(localStorage.getItem('dadosPeixes')) || [];
 
-function enviarDadosAlfaces() {
-    const dadosAlfaces = {
-        mes: document.getElementById('mes').value,
-        ano: document.getElementById('ano').value,
-        quantidade: document.getElementById('quantidade').value,
-        peso: document.getElementById('peso').value,
-        medicoes: []
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbwrZLLmrjcw7TuCoOL1sIUe0pa9sfNgFUIsPrF-YdI/dev', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dadosAlfaces),
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        fetchAlfacesData();  // Atualiza os dados da tabela
-    })
-    .catch(error => console.error('Erro ao enviar dados:', error));
-}
-
-function limparDadosAlfaces() {
-    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limpar=true', {
-        method: 'POST'
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert("Todos os dados foram apagados.");
-        dadosAlfaces = [];
-        document.getElementById('tabelaDadosAlfaces').innerHTML = '';
-    })
-    .catch(error => console.error('Erro ao limpar dados:', error));
-}
-
-// Funções para Peixes
-function fetchDadosPeixes() {
-    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limpar=true') // Substitua pela URL correta
-        .then(response => response.json())
-        .then(data => {
-            dadosPeixes = data.map(row => ({
-                mes: row[0],
-                ano: row[1],
-                tanque: row[2],
-                peso: row[3],
-                quantidade: row[4],
-                tamanho: row[5]
-            }));
-        })
-        .catch(error => console.error('Erro ao buscar dados dos peixes:', error));
-}
-
-function enviarDadosPeixes() {
-    const dadosPeixes = {
-        mes: document.getElementById('mes').value,
-        ano: document.getElementById('ano').value,
-        tanque: document.getElementById('tanque').value,
-        peso: document.getElementById('peso').value,
-        quantidade: document.getElementById('quantidade').value,
-        tamanho: document.getElementById('tamanho').value,
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limparDadosPeixes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dadosPeixes),
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        fetchDadosPeixes();
-    })
-    .catch(error => console.error('Erro ao enviar dados dos peixes:', error));
-}
-
+// Mostrar Tabela de Alfaces
 document.getElementById('mostrarTabelaAlfaces').addEventListener('click', function() {
-    fetchAlfacesData();
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
         <h3>Dados dos Alfaces Coletados</h3>
@@ -105,6 +11,7 @@ document.getElementById('mostrarTabelaAlfaces').addEventListener('click', functi
             <label for="mesAnoSelectAlfaces">Selecione Mês/Ano:</label>
             <select id="mesAnoSelectAlfaces" class="form-control">
                 <option value="">Selecione...</option>
+                <!-- As opções serão inseridas aqui -->
             </select>
         </div>
         <table class="table table-bordered">
@@ -115,7 +22,9 @@ document.getElementById('mostrarTabelaAlfaces').addEventListener('click', functi
                     <th>Medições (cm)</th>
                 </tr>
             </thead>
-            <tbody id="tabelaDadosAlfaces"></tbody>
+            <tbody id="tabelaDadosAlfaces">
+                <!-- Os dados serão inseridos aqui -->
+            </tbody>
         </table>
         <button id="limparDadosAlfaces" class="btn btn-danger">Limpar Dados</button>
     `;
@@ -145,9 +54,17 @@ document.getElementById('mostrarTabelaAlfaces').addEventListener('click', functi
         });
     });
 
-    document.getElementById('limparDadosAlfaces').addEventListener('click', limparDadosAlfaces);
+    document.getElementById('limparDadosAlfaces').addEventListener('click', function() {
+        if (confirm("Tem certeza que deseja limpar todos os dados?")) {
+            localStorage.removeItem('dadosAlfaces');
+            dadosAlfaces = [];
+            document.getElementById('tabelaDadosAlfaces').innerHTML = '';
+            alert("Todos os dados foram apagados.");
+        }
+    });
 });
 
+// Inserir Dados de Alfaces
 document.getElementById('inserirDadosAlfaces').addEventListener('click', function() {
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
@@ -179,21 +96,72 @@ document.getElementById('inserirDadosAlfaces').addEventListener('click', functio
                 <input type="number" class="form-control" id="quantidade" required>
             </div>
             <div class="form-group">
-                <label for="peso">Peso Total (kg):</label>
-                <input type="number" class="form-control" id="peso" required>
+                <label for="peso">Peso Total do Alface:</label>
+                <input type="number" step="0.01" class="form-control" id="peso" required>
             </div>
-            <button type="button" class="btn btn-primary" id="submitDadosAlfaces">Enviar Dados</button>
+            <div id="medicoesAlfaces"></div>
+            <button type="button" class="btn btn-primary" onclick="adicionarMedicoes()">Adicionar Medições</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </form>
     `;
 
-    document.getElementById('submitDadosAlfaces').addEventListener('click', enviarDadosAlfaces);
+    document.getElementById('formDadosAlfaces').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const mes = document.getElementById('mes').value;
+        const ano = document.getElementById('ano').value;
+        const quantidade = document.getElementById('quantidade').value;
+        const peso = document.getElementById('peso').value;
+        const medicoes = [];
+        for (let i = 1; i <= quantidade; i++) {
+            medicoes.push([
+                document.getElementById(`medicao${i}_1`).value,
+                document.getElementById(`medicao${i}_2`).value,
+                document.getElementById(`medicao${i}_3`).value,
+                document.getElementById(`medicao${i}_4`).value
+            ].join('/'));
+        }
+
+        dadosAlfaces.push({ mes, ano, quantidade, peso, medicoes });
+
+        // Salvar dados no Local Storage
+        localStorage.setItem('dadosAlfaces', JSON.stringify(dadosAlfaces));
+
+        // Limpar o formulário após o envio
+        document.getElementById('formDadosAlfaces').reset();
+        document.getElementById('medicoesAlfaces').innerHTML = '';
+    });
 });
 
+function adicionarMedicoes() {
+    const quantidade = document.getElementById('quantidade').value;
+    const medicoesDiv = document.getElementById('medicoesAlfaces');
+    medicoesDiv.innerHTML = '';
+    for (let i = 1; i <= quantidade; i++) {
+        medicoesDiv.innerHTML += `
+            <h4>Medições para Alface ${i}</h4>
+            <div class="form-group">
+                <label for="medicao${i}_1">Medição 1 (cm):</label>
+                <input type="number" class="form-control" id="medicao${i}_1" required>
+            </div>
+            <div class="form-group">
+                <label for="medicao${i}_2">Medição 2 (cm):</label>
+                <input type="number" class="form-control" id="medicao${i}_2" required>
+            </div>
+            <div class="form-group">
+                <label for="medicao${i}_3">Medição 3 (cm):</label>
+                <input type="number" class="form-control" id="medicao${i}_3" required>
+            </div>
+            <div class="form-group">
+                <label for="medicao${i}_4">Medição 4 (cm):</label>
+                <input type="number" class="form-control" id="medicao${i}_4" required>
+            </div>
+        `;
+    }
+}
+
+// Mostrar Tabela de Peixes
 document.getElementById('mostrarTabelaPeixes').addEventListener('click', function() {
-    fetchDadosPeixes();
-});
-
-function mostrarTabelaPeixes() {
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
         <h3>Dados dos Peixes Coletados</h3>
@@ -214,16 +182,16 @@ function mostrarTabelaPeixes() {
                     <th>Ano</th>
                     <th>Peso (g)</th>
                     <th>Quantidade</th>
-                    <th>Tamanho (cm)</th>
                 </tr>
             </thead>
-            <tbody id="tabelaDadosPeixes"></tbody>
+            <tbody id="tabelaDadosPeixes">
+                <!-- Os dados serão inseridos aqui -->
+            </tbody>
         </table>
         <button id="limparDadosPeixes" class="btn btn-danger">Limpar Dados</button>
     `;
 
-    const tanqueSelect = document.getElementById('tanqueSelect');
-    tanqueSelect.addEventListener('change', function() {
+    document.getElementById('tanqueSelect').addEventListener('change', function() {
         const selectedTanque = this.value;
         const tabelaDadosPeixes = document.getElementById('tabelaDadosPeixes');
         tabelaDadosPeixes.innerHTML = '';
@@ -235,16 +203,23 @@ function mostrarTabelaPeixes() {
                         <td>${item.ano}</td>
                         <td>${item.peso}</td>
                         <td>${item.quantidade}</td>
-                        <td>${item.tamanho}</td>
                     </tr>
                 `;
             }
         });
     });
 
-    document.getElementById('limparDadosPeixes').addEventListener('click', limparDadosPeixes);
-};
+    document.getElementById('limparDadosPeixes').addEventListener('click', function() {
+        if (confirm("Tem certeza que deseja limpar todos os dados?")) {
+            localStorage.removeItem('dadosPeixes');
+            dadosPeixes = [];
+            document.getElementById('tabelaDadosPeixes').innerHTML = '';
+            alert("Todos os dados foram apagados.");
+        }
+    });
+});
 
+// Inserir Dados de Peixes
 document.getElementById('inserirDadosPeixes').addEventListener('click', function() {
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
@@ -272,8 +247,8 @@ document.getElementById('inserirDadosPeixes').addEventListener('click', function
                 <input type="number" class="form-control" id="anoPeixes" required>
             </div>
             <div class="form-group">
-                <label for="tanque">Tanque:</label>
-                <select id="tanque" class="form-control" required>
+                <label for="tanquePeixes">Tanque:</label>
+                <select id="tanquePeixes" class="form-control" required>
                     <option value="T1">T1</option>
                     <option value="T2">T2</option>
                     <option value="T3">T3</option>
@@ -281,34 +256,34 @@ document.getElementById('inserirDadosPeixes').addEventListener('click', function
                 </select>
             </div>
             <div class="form-group">
-                <label for="peso">Peso Total dos Peixes (g):</label>
-                <input type="number" step="0.01" class="form-control" id="peso" required>
+                <label for="pesoPeixes">Peso Total (g):</label>
+                <input type="number" step="0.01" class="form-control" id="pesoPeixes" required>
             </div>
             <div class="form-group">
-                <label for="quantidade">Quantidade de Peixes:</label>
-                <input type="number" class="form-control" id="quantidade" required>
+                <label for="quantidadePeixes">Quantidade:</label>
+                <input type="number" class="form-control" id="quantidadePeixes" required>
             </div>
-            <div class="form-group">
-                <label for="tamanho">Tamanho Médio dos Peixes (cm):</label>
-                <input type="number" step="0.01" class="form-control" id="tamanho" required>
-            </div>
-            <button type="button" class="btn btn-success" id="submitDadosPeixes">Salvar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </form>
     `;
 
-    document.getElementById('submitDadosPeixes').addEventListener('click', enviarDadosPeixes);
+    document.getElementById('formDadosPeixes').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const mes = document.getElementById('mesPeixes').value;
+        const ano = document.getElementById('anoPeixes').value;
+        const tanque = document.getElementById('tanquePeixes').value;
+        const peso = document.getElementById('pesoPeixes').value;
+        const quantidade = document.getElementById('quantidadePeixes').value;
+
+        dadosPeixes.push({ mes, ano, tanque, peso, quantidade });
+
+        // Salvar dados no Local Storage
+        localStorage.setItem('dadosPeixes', JSON.stringify(dadosPeixes));
+
+        // Limpar o formulário após o envio
+        document.getElementById('formDadosPeixes').reset();
+    });
 });
 
-// Função para limpar os dados dos peixes na planilha
-function limparDadosPeixes() {
-    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limparPeixes=true', {
-        method: 'POST'
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert("Todos os dados dos peixes foram apagados.");
-        dadosPeixes = [];
-        document.getElementById('tabelaDadosPeixes').innerHTML = '';
-    })
-    .catch(error => console.error('Erro ao limpar dados:', error));
-}
+

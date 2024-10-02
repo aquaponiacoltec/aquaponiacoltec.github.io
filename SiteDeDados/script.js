@@ -1,5 +1,7 @@
 let dadosAlfaces = [];
+let dadosPeixes = []; // Variável para armazenar dados dos peixes
 
+// Funções para Alfaces
 function fetchAlfacesData() {
     fetch('https://script.google.com/macros/s/AKfycbwrZLLmrjcw7TuCoOL1sIUe0pa9sfNgFUIsPrF-YdI/dev') 
         .then(response => response.json())
@@ -17,7 +19,6 @@ function fetchAlfacesData() {
 
 function enviarDadosAlfaces() {
     const dadosAlfaces = {
-        type: "alface",
         mes: document.getElementById('mes').value,
         ano: document.getElementById('ano').value,
         quantidade: document.getElementById('quantidade').value,
@@ -25,7 +26,7 @@ function enviarDadosAlfaces() {
         medicoes: []
     };
 
-    fetch('https://script.google.com/macros/s/AKfycbwrZLLmrjcw7TuCoOL1sIUe0pa9sfNgFUIsPrF-YdI/dev', {  // Substitua pela URL do seu Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwrZLLmrjcw7TuCoOL1sIUe0pa9sfNgFUIsPrF-YdI/dev', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -40,9 +41,8 @@ function enviarDadosAlfaces() {
     .catch(error => console.error('Erro ao enviar dados:', error));
 }
 
-
 function limparDadosAlfaces() {
-    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limpar=true', {  // Adicionando um parâmetro para indicar que a ação é de limpeza
+    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limpar=true', {
         method: 'POST'
     })
     .then(response => response.text())
@@ -54,9 +54,50 @@ function limparDadosAlfaces() {
     .catch(error => console.error('Erro ao limpar dados:', error));
 }
 
+// Funções para Peixes
+function fetchDadosPeixes() {
+    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limpar=true') // Substitua pela URL correta
+        .then(response => response.json())
+        .then(data => {
+            dadosPeixes = data.map(row => ({
+                mes: row[0],
+                ano: row[1],
+                tanque: row[2],
+                peso: row[3],
+                quantidade: row[4],
+                tamanho: row[5]
+            }));
+        })
+        .catch(error => console.error('Erro ao buscar dados dos peixes:', error));
+}
+
+function enviarDadosPeixes() {
+    const dadosPeixes = {
+        mes: document.getElementById('mes').value,
+        ano: document.getElementById('ano').value,
+        tanque: document.getElementById('tanque').value,
+        peso: document.getElementById('peso').value,
+        quantidade: document.getElementById('quantidade').value,
+        tamanho: document.getElementById('tamanho').value,
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limparDadosPeixes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dadosPeixes),
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+        fetchDadosPeixes();
+    })
+    .catch(error => console.error('Erro ao enviar dados dos peixes:', error));
+}
+
 document.getElementById('mostrarTabelaAlfaces').addEventListener('click', function() {
     fetchAlfacesData();
-
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
         <h3>Dados dos Alfaces Coletados</h3>
@@ -74,9 +115,7 @@ document.getElementById('mostrarTabelaAlfaces').addEventListener('click', functi
                     <th>Medições (cm)</th>
                 </tr>
             </thead>
-            <tbody id="tabelaDadosAlfaces">
-                <!-- Os dados serão inseridos aqui -->
-            </tbody>
+            <tbody id="tabelaDadosAlfaces"></tbody>
         </table>
         <button id="limparDadosAlfaces" class="btn btn-danger">Limpar Dados</button>
     `;
@@ -114,75 +153,47 @@ document.getElementById('inserirDadosAlfaces').addEventListener('click', functio
     conteudo.innerHTML = `
         <h3>Inserir Dados de Alfaces</h3>
         <form id="formDadosAlfaces">
-            <!-- Formulário aqui... -->
+            <div class="form-group">
+                <label for="mes">Mês de Medição:</label>
+                <select id="mes" class="form-control" required>
+                    <option value="Janeiro">Janeiro</option>
+                    <option value="Fevereiro">Fevereiro</option>
+                    <option value="Março">Março</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Maio">Maio</option>
+                    <option value="Junho">Junho</option>
+                    <option value="Julho">Julho</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Setembro">Setembro</option>
+                    <option value="Outubro">Outubro</option>
+                    <option value="Novembro">Novembro</option>
+                    <option value="Dezembro">Dezembro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ano">Ano:</label>
+                <input type="number" class="form-control" id="ano" required>
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade de Alfaces:</label>
+                <input type="number" class="form-control" id="quantidade" required>
+            </div>
+            <div class="form-group">
+                <label for="peso">Peso Total (kg):</label>
+                <input type="number" class="form-control" id="peso" required>
+            </div>
+            <button type="button" class="btn btn-primary" id="submitDadosAlfaces">Enviar Dados</button>
         </form>
     `;
 
-    document.getElementById('formDadosAlfaces').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const dadosAlfaces = {
-            mes: document.getElementById('mes').value,
-            ano: document.getElementById('ano').value,
-            quantidade: document.getElementById('quantidade').value,
-            peso: document.getElementById('peso').value,
-            medicoes: []
-        };
-
-        enviarDadosAlfaces(dadosAlfaces);
-    });
+    document.getElementById('submitDadosAlfaces').addEventListener('click', enviarDadosAlfaces);
 });
 
-function enviarDadosPeixes() {
-    const dadosPeixes = {
-        type: "peixe",
-        mes: document.getElementById('mes').value,
-        ano: document.getElementById('ano').value,
-        tanque: document.getElementById('tanque').value,
-        peso: document.getElementById('peso').value,
-        quantidade: document.getElementById('quantidade').value,
-        tamanho: document.getElementById('tamanho').value,
-    };
-
-    fetch('URL_DO_SEU_APPS_SCRIPT', { 
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dadosPeixes),
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        fetchDados();
-    })
-    .catch(error => console.error('Erro ao enviar dados:', error));
-}
-
-document.getElementById('formDadosPeixes').addEventListener('submit', function(e) {
-    e.preventDefault();
-    enviarDadosPeixes();
-});
-
-
-// Função para limpar os dados dos peixes na planilha
-function limparDadosPeixes() {
-    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limparPeixes=true', {  // Adicionando um parâmetro para indicar que a ação é de limpeza
-        method: 'POST'
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert("Todos os dados dos peixes foram apagados.");
-        dadosPeixes = [];
-        document.getElementById('tabelaDadosPeixes').innerHTML = '';
-    })
-    .catch(error => console.error('Erro ao limpar dados:', error));
-}
-
-// Mostrar Tabela de Peixes
 document.getElementById('mostrarTabelaPeixes').addEventListener('click', function() {
-    fetchDados();  // Buscar os dados da planilha antes de mostrar
+    fetchDadosPeixes();
+});
 
+function mostrarTabelaPeixes() {
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
         <h3>Dados dos Peixes Coletados</h3>
@@ -206,9 +217,7 @@ document.getElementById('mostrarTabelaPeixes').addEventListener('click', functio
                     <th>Tamanho (cm)</th>
                 </tr>
             </thead>
-            <tbody id="tabelaDadosPeixes">
-                <!-- Os dados serão inseridos aqui -->
-            </tbody>
+            <tbody id="tabelaDadosPeixes"></tbody>
         </table>
         <button id="limparDadosPeixes" class="btn btn-danger">Limpar Dados</button>
     `;
@@ -234,17 +243,16 @@ document.getElementById('mostrarTabelaPeixes').addEventListener('click', functio
     });
 
     document.getElementById('limparDadosPeixes').addEventListener('click', limparDadosPeixes);
-});
+};
 
-// Inserir Dados de Peixes
 document.getElementById('inserirDadosPeixes').addEventListener('click', function() {
     const conteudo = document.getElementById('conteudo');
     conteudo.innerHTML = `
         <h3>Inserir Dados de Peixes</h3>
         <form id="formDadosPeixes">
             <div class="form-group">
-                <label for="mes">Mês de Medição:</label>
-                <select id="mes" class="form-control" required>
+                <label for="mesPeixes">Mês de Medição:</label>
+                <select id="mesPeixes" class="form-control" required>
                     <option value="Janeiro">Janeiro</option>
                     <option value="Fevereiro">Fevereiro</option>
                     <option value="Março">Março</option>
@@ -260,8 +268,8 @@ document.getElementById('inserirDadosPeixes').addEventListener('click', function
                 </select>
             </div>
             <div class="form-group">
-                <label for="ano">Ano:</label>
-                <input type="number" class="form-control" id="ano" required>
+                <label for="anoPeixes">Ano:</label>
+                <input type="number" class="form-control" id="anoPeixes" required>
             </div>
             <div class="form-group">
                 <label for="tanque">Tanque:</label>
@@ -284,22 +292,23 @@ document.getElementById('inserirDadosPeixes').addEventListener('click', function
                 <label for="tamanho">Tamanho Médio dos Peixes (cm):</label>
                 <input type="number" step="0.01" class="form-control" id="tamanho" required>
             </div>
-            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="button" class="btn btn-success" id="submitDadosPeixes">Salvar</button>
         </form>
     `;
 
-    document.getElementById('formDadosPeixes').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const dadosPeixes = {
-            mes: document.getElementById('mes').value,
-            ano: document.getElementById('ano').value,
-            tanque: document.getElementById('tanque').value,
-            peso: document.getElementById('peso').value,
-            quantidade: document.getElementById('quantidade').value,
-            tamanho: document.getElementById('tamanho').value,
-        };
-
-        enviarDadosPeixes(dadosPeixes);
-    });
+    document.getElementById('submitDadosPeixes').addEventListener('click', enviarDadosPeixes);
 });
+
+// Função para limpar os dados dos peixes na planilha
+function limparDadosPeixes() {
+    fetch('https://script.google.com/macros/s/AKfycbxBh3DIJcSY2ZtNLyAJOAuBljPa6rgvtqeiEsWt66qvp7eNIVXK9aeMbYX-LKOKCGn9/exec?limparPeixes=true', {
+        method: 'POST'
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Todos os dados dos peixes foram apagados.");
+        dadosPeixes = [];
+        document.getElementById('tabelaDadosPeixes').innerHTML = '';
+    })
+    .catch(error => console.error('Erro ao limpar dados:', error));
+}

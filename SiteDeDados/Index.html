@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle - Dados de Colheita e Peixes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" onclick="showForm('colheitaForm')">Inserir Dados Colheita de Alface</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showForm('peixeForm')">Inserir Dados dos Peixes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showTable('colheitaTable')">Mostrar Tabela Colheita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showTable('peixeTable')">Mostrar Tabela Peixes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Painel de Controle</h1>
+                </div>
+
+                <div id="colheitaForm" class="form-section">
+                    <h2>Inserir Dados Colheita de Alface</h2>
+                    <form id="alfaceForm">
+                        <div class="mb-3">
+                            <label for="dataAlface" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="dataAlface" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantidadeAlface" class="form-label">Quantidade de Alfaces</label>
+                            <input type="number" class="form-control" id="quantidadeAlface" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pesoAlface" class="form-label">Peso Total (kg)</label>
+                            <input type="number" step="0.01" class="form-control" id="pesoAlface" required>
+                        </div>
+                        <div id="medicoesFolhasContainer"></div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+                
+
+                <div id="peixeForm" class="form-section">
+                    <h2>Inserir Dados dos Peixes</h2>
+                    <form id="peixeFormSubmit">
+                        <div class="mb-3">
+                            <label for="dataPeixe" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="dataPeixe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tanquePeixe" class="form-label">Tanque</label>
+                            <select class="form-select" id="tanquePeixe" required>
+                                <option value="T1">T1</option>
+                                <option value="T2">T2</option>
+                                <option value="T3">T3</option>
+                                <option value="Aquário">Aquário</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pesoPeixe" class="form-label">Peso Total (kg)</label>
+                            <input type="number" step="0.01" class="form-control" id="pesoPeixe" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+
+                <div id="colheitaTable" class="form-section">
+                    <h2>Tabela de Colheita de Alface</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Quantidade</th>
+                                <th>Peso Total</th>
+                                <th>Tamanho das 4 folhas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="colheitaTableBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="peixeTable" class="form-section">
+                    <h2>Tabela de Dados dos Peixes</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Tanque</th>
+                                <th>Peso Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="peixeTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

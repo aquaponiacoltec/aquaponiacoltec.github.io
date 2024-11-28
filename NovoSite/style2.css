@@ -10,6 +10,7 @@ body {
 }
 
 .navbar {
+    font-family: 'Comic Neue', sans-serif;
     background-color: #146f71;
 }
 
@@ -20,7 +21,7 @@ body {
     padding: 60px 0;
 }
 
-#line{
+#line {
     background-color: #146F71;
     height: 15px;
     width: auto;
@@ -37,25 +38,25 @@ body {
     padding: 20px;
 }
 
-a{
+a {
     color: white;
     text-decoration: none;
 }
 
-#info{
+#info {
     transition: transform 1s;
 }
 
-#info:hover{
+#info:hover {
     transform: scale(1.03);
 }
 
-
-#o-que-e-aquaponia-texto{
+#o-que-e-aquaponia-texto {
     font-size: 1.2rem;
     text-align: center;
 }
 
+/* Links e navegação */
 .nav-link {
     font-size: large;
     color: rgb(255, 255, 255);
@@ -66,17 +67,36 @@ a{
     color: rgb(20, 111, 113);
 }
 
-/* Estilo para "Sobre Nós" e "Sobre Aquaponia" */
 .nav-link.dropdown-toggle {
-    color: #146f71;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s ease;
 }
 
-/* Estilo para o dropdown menu */
+.nav-link.dropdown-toggle:hover {
+    color: #20b2aa; 
+    text-decoration: underline;
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu .dropdown-item {
+    color: #333;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .dropdown-menu .dropdown-item:hover {
     background-color: #146f71;
     color: white;
 }
-
 
 .bi-twitter, .bi-instagram, .bi-linkedin {
     color: rgb(20, 111, 113);
@@ -103,6 +123,34 @@ a{
     transition: transform 0.3s;
 }
 
+#intro, #sobre-aquaponia{
+    background-color: #fff; 
+    border:10px solid #ddd;
+    border-radius: 10px; 
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; 
+    margin-bottom: 50px;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: 90%;
+}
+
+#cuidados-aquaponia, #especies, #o-que-e-aquaponia-texto, #sistemas{
+    color:#146F71;
+    background-color: #fff; 
+    border:10px solid #ddd;
+    border-radius: 10px; 
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; 
+    margin-bottom: 50px;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: 90%;
+}
+
+
 .card-img:hover {
     transform: scale(1.1);
 }
@@ -110,19 +158,13 @@ a{
 .card-title {
     font-size: 1.5rem;
     color: white;
-    
-}
-
-.dropdown-toggle {
-    background-color: white;
-    border: 0;
 }
 
 .btn-primary {
     background-color: transparent;
     border-radius: 25px;
     font-size: 1.2rem;
-    color: rgb(#146F71);
+    color: #146F71;
     margin-top: 10px;
 }
 
@@ -138,18 +180,16 @@ footer {
     padding: 10px 0;
 }
 
-
-
 .navbar-brand {
     font-size: 1.8rem;
     color: rgb(255, 255, 255);
 }
 
-.navbar-toggler{
+.navbar-toggler {
     background-color: #146f71;
 }
 
-.navbar-brand:hover{
+.navbar-brand:hover {
     color: white;
 }
 
@@ -172,10 +212,9 @@ footer {
     font-weight: 500;
     font-size: 2.5rem;
     border-radius: 3px;
-    background-color: rgb(255, 255, 255);
     padding: 20px;
 }
-/* Rectangle around sections */
+
 .section-content {
     border: 2px solid #146f71;
     background-color: #146F71;
@@ -183,5 +222,4 @@ footer {
     color: white;
     padding: 20px;
     margin-bottom: 20px;
-   
 }

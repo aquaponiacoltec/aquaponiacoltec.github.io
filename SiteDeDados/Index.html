@@ -75,6 +75,10 @@
                             <label for="pesoPeixe" class="form-label">Peso Total (kg)</label>
                             <input type="number" step="0.01" class="form-control" id="pesoPeixe" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="quantidadePeixe" class="form-label">Quantidade de Peixes</label>
+                            <input type="number" class="form-control" id="quantidadePeixe" required>
+                        </div>                        
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
@@ -103,10 +107,11 @@
                                 <th>Data</th>
                                 <th>Tanque</th>
                                 <th>Peso Total</th>
+                                <th>Quantidade</th>
                             </tr>
                         </thead>
                         <tbody id="peixeTableBody">
-                        </tbody>
+                        </tbody>                        
                     </table>
                 </div>
             </main>

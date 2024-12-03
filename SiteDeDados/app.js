@@ -64,14 +64,13 @@ document.getElementById('colheitaForm').addEventListener('submit', function(even
     submitDataToGoogleSheets(data, 'alface');
 });
 
-
-
 document.getElementById('peixeForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const data = {
         data: document.getElementById('dataPeixe').value,
         tanque: document.getElementById('tanquePeixe').value,
-        peso: document.getElementById('pesoPeixe').value
+        peso: document.getElementById('pesoPeixe').value,
+        quantidade: document.getElementById('quantidadePeixe').value
     };
 
     console.log("Enviando os seguintes dados de Peixes:", data);
@@ -108,6 +107,6 @@ function loadDataFromGoogleSheets(tableId) {
             });
             tableBody.appendChild(tr);
         });
-    })
+    })    
     .catch(error => console.error('Erro ao carregar os dados:', error));
 }

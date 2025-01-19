@@ -43,6 +43,41 @@
             background-position: center;
             color: #fff;
         }
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        
+        #social .section-title {
+            color: white;
+        }
+
+        #social .social-icons a i {
+            color: rgb(255, 255, 255);
+            transition: color 0.3s;
+        }
+
+        #social .social-icons a i:hover {
+            color: rgb(20, 111, 113);
+        }
+
     </style>
 </head>
 
@@ -67,7 +102,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sobre Aquaponia
+                            Aquaponia
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                             <li><a class="dropdown-item" href="Site.html#sobre-aquaponia">O que é</a></li>
@@ -91,14 +126,14 @@
 
     <div class="container">
         <div class="accordion" id="yearAccordion">
-            <!-- Seção Orientador -->
+           <!-- Seção Orientador -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOri">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOri" aria-expanded="false" aria-controls="collapseOri">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOri" aria-expanded="false" aria-controls="collapseOri">
                         Orientador
                     </button>
                 </h2>
-                <div id="collapseOri" class="accordion-collapse collapse show" aria-labelledby="headingOri" data-bs-parent="#yearAccordion">
+                <div id="collapseOri" class="accordion-collapse collapse" aria-labelledby="headingOri" data-bs-parent="#yearAccordion">
                     <div class="accordion-body">
                         <div class="row g-4">
                             <div class="col-md-6 col-lg-4">
@@ -118,11 +153,11 @@
             <!-- Seção 2023 -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading2023">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2023" aria-expanded="false" aria-controls="collapse2023">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2023" aria-expanded="false" aria-controls="collapse2023">
                         2023
                     </button>
                 </h2>
-                <div id="collapse2023" class="accordion-collapse collapse show" aria-labelledby="heading2023" data-bs-parent="#yearAccordion">
+                <div id="collapse2023" class="accordion-collapse collapse" aria-labelledby="heading2023" data-bs-parent="#yearAccordion">
                     <div class="accordion-body">
                         <div class="row g-4">
                             <div class="col-md-6 col-lg-4">
@@ -147,6 +182,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Seção 2024 -->
             <div class="accordion-item">

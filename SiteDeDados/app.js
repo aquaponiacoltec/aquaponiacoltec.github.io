@@ -78,17 +78,20 @@ document.getElementById('peixeForm').addEventListener('submit', function(event) 
 });
 
 function submitDataToGoogleSheets(data, tipo) {
+    const payload = { ...data, tipo };
+
     fetch('https://script.google.com/macros/s/AKfycbxuHgR1Z_tPEEGNtDLyod4APPTnowi01FoXWFuH0wn5Rm3bh5hmUegFsdEXP6ZROVvB/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...data, tipo })
+        body: JSON.stringify(payload)
     })
     .then(() => alert('Dados enviados com sucesso!'))
     .catch(error => console.error('Erro ao enviar os dados:', error));
 }
+
 
 function loadDataFromGoogleSheets(tableId) {
     fetch('https://script.google.com/macros/s/AKfycbxuHgR1Z_tPEEGNtDLyod4APPTnowi01FoXWFuH0wn5Rm3bh5hmUegFsdEXP6ZROVvB/exec?tipo=' + tableId, {

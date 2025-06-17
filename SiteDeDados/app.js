@@ -84,7 +84,7 @@ function submitDataToGoogleSheets(data, tipo) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ data, tipo })
+        body: JSON.stringify({ ...data, tipo })
     })
     .then(() => alert('Dados enviados com sucesso!'))
     .catch(error => console.error('Erro ao enviar os dados:', error));
